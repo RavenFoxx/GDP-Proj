@@ -1093,8 +1093,8 @@ MonoBehaviour:
   Energy: 0
   Hunger: 0
   Happiness: 0
-  day: 0
-  name: PlayerNameNotFound
+  Day: 0
+  Name: PlayerNameNotFound
 --- !u!4 &813024154
 Transform:
   m_ObjectHideFlags: 0
@@ -3648,6 +3648,7 @@ MonoBehaviour:
   Energy: {fileID: 2060209017}
   Hunger: {fileID: 1951869494}
   Happiness: {fileID: 1399522252}
+  ProgressBar: {fileID: 0}
 --- !u!4 &2131085649
 Transform:
   m_ObjectHideFlags: 0
