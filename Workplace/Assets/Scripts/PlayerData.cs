@@ -9,8 +9,8 @@ public class PlayerData : MonoBehaviour
     public int Energy;
     public int Hunger;
     public int Happiness;
-    public int Day;
-    public string Name = "PlayerNameNotFound";
+    public int day;
+    //public string name = "PlayerNameNotFound";
     private void Awake()
     {
         if (Instance == null) {
