@@ -10,7 +10,7 @@ public class testfunctionality : MonoBehaviour
     public int MoneyEarned = 100;
     public float minimumChanceToPromote = 0.1f;
     public float currentChanceToPromote;
-    public GameObject textDisplay;
+    public Text textDisplay;
     
     private IEnumerator Working()
     {
@@ -30,10 +30,10 @@ public class testfunctionality : MonoBehaviour
     {
         PlayerData.Instance.Money += MoneyEarned;
         Debug.Log("You earned $100 from working today!");
-        textDisplay.GetComponent<Text>().text = "You earned $" + MoneyEarned + " from working today!";
+        textDisplay.text = "You earned $" + MoneyEarned + " from working today!" + "\n" + "You lost 50 energy from working!";
         PlayerData.Instance.Energy -= 50;
         Debug.Log("You lost 50 energy from working.");
-        //textDisplay.GetComponent<Text>().text = " You lost" +  
+        //textDisplay.text = " You lost 50 energy from working!";
         currentChanceToPromote += 0.1f;
     }
 
@@ -52,7 +52,7 @@ public class testfunctionality : MonoBehaviour
         if(currentChanceToPromote < minimumChanceToPromote)
         {
             Debug.Log("Sorry, You do not meet the requirements!");
-            textDisplay.GetComponent<Text>().text = "Sorry, You do not meet the requirements!";
+            textDisplay.text = "Sorry, You do not meet the requirements!";
         }
         else
         {
@@ -67,14 +67,14 @@ public class testfunctionality : MonoBehaviour
             if(currentChanceToPromote == 1f)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                textDisplay.GetComponent<Text>().text = "Congratulations, You have been promoted and now have higher pay!";
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
                 MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
             }
             if(Random.value > currentChanceToPromote)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                textDisplay.GetComponent<Text>().text = "Congratulations, You have been promoted and now have higher pay!";
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
                 MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
             }
@@ -82,8 +82,13 @@ public class testfunctionality : MonoBehaviour
             {
                 Debug.Log("Sorry, You have failed to promote!");
                 currentChanceToPromote -= 0.05f;
-                textDisplay.GetComponent<Text>().text = "Sorry, You have failed to promote!";
+                textDisplay.text = "Sorry, You have failed to promote!";
             }
-        }      
+        }
+    }
+    public void ExitWorkplace()
+    {
+        textDisplay.text = "You left your workplace.";
+        SceneManager.UnloadSceneAsync("WorkplaceAction");
     }
 }
