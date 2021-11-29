@@ -34,7 +34,7 @@ public class ShopManager : MonoBehaviour
                 playerData.Energy += selectedStuff.energy;
                 playerData.Hunger += selectedStuff.hunger;
                 playerData.Happiness += selectedStuff.happiness;
-                playerData.intelligence += selectedStuff.intelligence;
+                playerData.Intelligence += selectedStuff.intelligence;
                 selectedStuff.amountLeft--;
                 printData();
             }
@@ -55,6 +55,6 @@ public class ShopManager : MonoBehaviour
         print("Energy " + playerData.Energy);
         print("Hunger: " + playerData.Hunger);
         print("Happiness: " + playerData.Happiness);
-        print("Intelligence: " + playerData.intelligence);
+        print("Intelligence: " + playerData.Intelligence);
     }
 }

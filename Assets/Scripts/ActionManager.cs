@@ -18,6 +18,10 @@ public class ActionManager : MonoBehaviour
         NameText.text = _inst.Name;
         UpdateValues();
     }
+    private void Update()
+    {
+        UpdateValues();
+    }
     public void EnterHome() { SceneManager.LoadSceneAsync("HomeAction", LoadSceneMode.Additive); }
     public void EnterWorkplace() { SceneManager.LoadSceneAsync("WorkplaceAction", LoadSceneMode.Additive); }
     public void EnterBank() { SceneManager.LoadSceneAsync("BankAction", LoadSceneMode.Additive); }

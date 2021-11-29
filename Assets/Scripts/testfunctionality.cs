@@ -33,7 +33,7 @@ public class testfunctionality : MonoBehaviour
         textDisplay.text = "You earned $" + MoneyEarned + " from working today!";
         PlayerData.Instance.Energy -= 50;
         Debug.Log("You lost 50 energy from working.");
-        //textDisplay.GetComponent<Text>().text = " You lost" +  
+        textDisplay.text = " You lost 50 energy from working!";
         currentChanceToPromote += 0.1f;
     }
 
