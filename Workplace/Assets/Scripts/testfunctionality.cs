@@ -86,6 +86,16 @@ public class testfunctionality : MonoBehaviour
             }
         }
     }
+
+    public void displayChance()
+    {
+        textDisplay.text = "Current Chance to promote:" + currentChanceToPromote * 10;
+    }
+
+    public void displayWorkingConditions()
+    {
+        textDisplay.text = "Work to earn $" + MoneyEarned + " but lose 50 Energy?"; 
+    }
     public void ExitWorkplace()
     {
         textDisplay.text = "You left your workplace.";
