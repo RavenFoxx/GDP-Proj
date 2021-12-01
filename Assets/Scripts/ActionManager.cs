@@ -15,6 +15,7 @@ public class ActionManager : MonoBehaviour
     public Slider ProgressBar;
     private void Awake() {
         if (_inst == null) _inst = PlayerData.Instance;
+        ProgressBar.maxValue = _inst.Goal;
         NameText.text = _inst.Name;
         UpdateValues();
     }
@@ -30,6 +31,7 @@ public class ActionManager : MonoBehaviour
         Energy.value = (float)_inst.Energy / 100;
         Hunger.value = (float)_inst.Hunger / 100;
         Happiness.value = (float)_inst.Happiness / 100;
+        ProgressBar.value = _inst.Money;
         OtherInfoText.text = "Day " + _inst.Day + "\nMoney: $" + _inst.Money;
     }
 }
