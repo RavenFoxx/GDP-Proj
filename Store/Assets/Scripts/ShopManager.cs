@@ -6,16 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
-    public PlayerData playerData;
-
+    PlayerData playerData = PlayerData.Instance;
+    StoreData storeData = StoreData.Instance;
+    
     public Text nameText;
     public GameObject selectedObject;
 
 
-    private void Awake()
-    {
-        playerData = FindObjectOfType<PlayerData>();
-    }
     public void ExitShop()
     {
         SceneManager.UnloadSceneAsync("StoreAction");
@@ -23,11 +20,10 @@ public class ShopManager : MonoBehaviour
 
     public void onPurchase() // fix this so it only deducts from the selected
     {
-        selectedObject = GameObject.FindGameObjectWithTag(nameText.text);
-        var selectedStuff = selectedObject.GetComponent<Stuff>();
-        if (playerData.Money >= selectedStuff.cost)
+        Stuff selectedStuff = GameObject.FindGameObjectWithTag(nameText.text).GetComponent<Stuff>();
+        if (playerData.Money >= selectedStuff.cost) //check if enough money
         {
-            if (selectedStuff.amountLeft > 0)
+            if (selectedStuff.amountLeft > 0) //check if there is stock left
             {
                 printData();
                 print(selectedStuff);
@@ -36,7 +32,9 @@ public class ShopManager : MonoBehaviour
                 playerData.Hunger += selectedStuff.hunger;
                 playerData.Happiness += selectedStuff.happiness;
                 playerData.Intelligence += selectedStuff.intelligence;
+                
                 selectedStuff.amountLeft--;
+                storeData.updateAmount(selectedStuff.name, selectedStuff.amountLeft);
                 printData();
             }
             else

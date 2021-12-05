@@ -2,47 +2,149 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class testfunctionality : MonoBehaviour
 {
     public int MoneyEarned = 100;
     public float minimumChanceToPromote = 0.1f;
     public float currentChanceToPromote;
+    PlayerData _inst = PlayerData.Instance;
+    public Text textDisplay;
+    
+    private IEnumerator Working()
+    {
+        SceneManager.LoadSceneAsync("Workplace", LoadSceneMode.Additive);
+        Debug.Log("Playing Animation");
+
+        yield return new WaitForSecondsRealtime (5);
+        SceneManager.UnloadSceneAsync("Workplace");
+        Work();
+    }
+    public void GoToWork()
+    {
+        StartCoroutine(Working());      
+    }
+
     public void Work()
     {
-        SceneManager.LoadScene(1);
         PlayerData.Instance.Money += MoneyEarned;
         Debug.Log("You earned $100 from working today!");
+        textDisplay.text = "You earned $" + MoneyEarned + " from working today!" + "\n" + "You lost 50 energy from working!";
         PlayerData.Instance.Energy -= 50;
         Debug.Log("You lost 50 energy from working.");
+        //textDisplay.text = " You lost 50 energy from working!";
         currentChanceToPromote += 0.1f;
     }
-    public void Promotion()
-    {
-        SceneManager.LoadScene(2);
 
-        if(currentChanceToPromote >= minimumChanceToPromote)
+    private IEnumerator Promoting()
+    {
+        SceneManager.LoadSceneAsync("PromotionScene", LoadSceneMode.Additive);
+        Debug.Log("Playing Animation");
+
+        yield return new WaitForSecondsRealtime(5);
+        SceneManager.UnloadSceneAsync("PromotionScene");
+        Promotion();
+    }
+
+    public void GoToPromote()
+    {
+        if(currentChanceToPromote < minimumChanceToPromote)
         {
-            if(currentChanceToPromote == 1f)
-            {
-                Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                MoneyEarned += 50;
-                currentChanceToPromote = 0.0f;
-            }
-            if(Random.value > currentChanceToPromote)
-            {
-                Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                MoneyEarned += 50;
-                currentChanceToPromote = 0.0f;
-            }
-            else
-            {
-                Debug.Log("Sorry, You have failed to promote!");
-            }
+            Debug.Log("Sorry, You do not meet the requirements!");
+            textDisplay.text = "Sorry, You do not meet the requirements!";
         }
         else
         {
-            Debug.Log("Sorry, You do not meet the requirements!");
+            StartCoroutine(Promoting());
         }
+        
+    } 
+    public void Promotion()
+    {
+        if(PlayerData.Instance.Intelligence == 0f)
+        {
+            float randomNumber = Random.Range(0.1f, 1f);
+            Debug.Log(randomNumber);
+            if(currentChanceToPromote == 1f)
+            {
+                Debug.Log("Congratulations, You have been promoted and now have higher pay!");
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                MoneyEarned += 50;
+                currentChanceToPromote = 0.0f;
+            }
+            if(randomNumber < currentChanceToPromote)
+            {
+                Debug.Log("Congratulations, You have been promoted and now have higher pay!");
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                MoneyEarned += 50;
+                currentChanceToPromote = 0.0f;
+            }
+            else if (randomNumber > currentChanceToPromote)
+            {
+                Debug.Log("Sorry, You have failed to promote!");
+                currentChanceToPromote -= 0.05f;
+                textDisplay.text = "Sorry, You have failed to promote!";
+            }
+        }
+        else if(PlayerData.Instance.Intelligence > 0f)
+        {
+            currentChanceToPromote += PlayerData.Instance.Intelligence / 10;
+            float randomNumber = Random.Range(0.1f, 1f);
+            Debug.Log(randomNumber);
+            if (currentChanceToPromote >= 1f)
+            {
+                Debug.Log("Congratulations, You have been promoted and now have higher pay!");
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                MoneyEarned += 50;
+                currentChanceToPromote = 0.0f;
+            }
+            if (randomNumber < currentChanceToPromote)
+            {
+                Debug.Log("Congratulations, You have been promoted and now have higher pay!");
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                MoneyEarned += 50;
+                currentChanceToPromote = 0.0f;
+            }
+            else if (randomNumber > currentChanceToPromote)
+            {
+                Debug.Log("Sorry, You have failed to promote!");
+                currentChanceToPromote -= 0.05f;
+                textDisplay.text = "Sorry, You have failed to promote!";
+            }
+        }
+    }
+
+    public void displayChance()
+    {
+        textDisplay.text = "Current Chance to promote:" + currentChanceToPromote * 100 + "%";
+    }
+
+    public void displayWorkingConditions()
+    {
+        textDisplay.text = "Work to earn $" + MoneyEarned + " but lose 50 Energy?"; 
+    }
+
+    //for player UI
+    public Text Money;
+    public Slider Energy;
+    public Slider Hunger;
+    public Slider Happiness;
+    public void UpdateValues()
+    {
+        Energy.value = (float)_inst.Energy / 100;
+        Hunger.value = (float)_inst.Hunger / 100;
+        Happiness.value = (float)_inst.Happiness / 100;
+        Money.text = "Money: $" + _inst.Money + "/$" + _inst.Goal;
+    }
+    private void Update()
+    {
+        UpdateValues();
+    }
+    public void ExitWorkplace()
+    {
+        textDisplay.text = "You left your workplace.";
+        SceneManager.UnloadSceneAsync("WorkplaceAction");
     }
 }

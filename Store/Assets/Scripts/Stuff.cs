@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Stuff : MonoBehaviour
 {
-    private PlayerData playerData;
+    StoreData storeData = StoreData.Instance;
 
     public new string name;
     public string description;
@@ -31,12 +31,8 @@ public class Stuff : MonoBehaviour
     public Text intelligenceText;
     public Text amountLeftText;
 
-    void Awake()
-    {
-        playerData = FindObjectOfType<PlayerData>();
-    }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
     }
@@ -44,7 +40,8 @@ public class Stuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        amountLeft = storeData.getAmount(this.name);
+        Debug.Log(storeData.getAmount(this.name));
     }
 
     public void DisplayStats()
