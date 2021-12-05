@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 715412879}
         m_TargetAssemblyTypeName: testfunctionality, Assembly-CSharp
-        m_MethodName: Work
+        m_MethodName: GoToWork
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -364,7 +364,7 @@ MonoBehaviour:
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -891,7 +891,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 715412879}
         m_TargetAssemblyTypeName: testfunctionality, Assembly-CSharp
-        m_MethodName: Promotion
+        m_MethodName: GoToPromote
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1182,6 +1182,10 @@ MonoBehaviour:
   minimumChanceToPromote: 0.1
   currentChanceToPromote: 0
   textDisplay: {fileID: 1613346407}
+  Money: {fileID: 1781593557}
+  Energy: {fileID: 430419046}
+  Hunger: {fileID: 418423429}
+  Happiness: {fileID: 734065732}
 --- !u!4 &715412880
 Transform:
   m_ObjectHideFlags: 0
@@ -1957,7 +1961,7 @@ MonoBehaviour:
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -1965,7 +1969,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Hunger:'
+  m_Text: 'Hunger::'
 --- !u!222 &1402121170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2638,8 +2642,8 @@ MonoBehaviour:
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 119
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
