@@ -30,10 +30,10 @@ public class testfunctionality : MonoBehaviour
     {
         PlayerData.Instance.Money += MoneyEarned;
         Debug.Log("You earned $100 from working today!");
-        textDisplay.text = "You earned $" + MoneyEarned + " from working today!";
+        textDisplay.text = "You earned $" + MoneyEarned + " from working today!" + "\n" + "You lost 50 energy from working!";
         PlayerData.Instance.Energy -= 50;
         Debug.Log("You lost 50 energy from working.");
-        textDisplay.text = " You lost 50 energy from working!";
+        //textDisplay.text = " You lost 50 energy from working!";
         currentChanceToPromote += 0.1f;
     }
 
@@ -86,9 +86,19 @@ public class testfunctionality : MonoBehaviour
             }
         }
     }
+
+    public void displayChance()
+    {
+        textDisplay.text = "Current Chance to promote:" + currentChanceToPromote * 10;
+    }
+
+    public void displayWorkingConditions()
+    {
+        textDisplay.text = "Work to earn $" + MoneyEarned + " but lose 50 Energy?"; 
+    }
     public void ExitWorkplace()
     {
-        textDisplay.text = "You leave the bank.";
+        textDisplay.text = "You left your workplace.";
         SceneManager.UnloadSceneAsync("WorkplaceAction");
     }
 }
