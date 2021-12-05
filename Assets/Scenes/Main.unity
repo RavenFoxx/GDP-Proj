@@ -1096,6 +1096,7 @@ MonoBehaviour:
   Happiness: 0
   Day: 0
   Intelligence: 0
+  Goal: 0
   Name: PlayerNameNotFound
 --- !u!4 &813024154
 Transform:
