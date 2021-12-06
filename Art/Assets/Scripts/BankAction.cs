@@ -79,4 +79,20 @@ public class BankAction : MonoBehaviour
         textboxText.text = "You leave the bank.";
         SceneManager.UnloadSceneAsync("BankAction");
     }
+    //for player UI
+    public Text Money;
+    public Slider Energy;
+    public Slider Hunger;
+    public Slider Happiness;
+    public void UpdateValues()
+    {
+        Energy.value = (float)_inst.Energy / 100;
+        Hunger.value = (float)_inst.Hunger / 100;
+        Happiness.value = (float)_inst.Happiness / 100;
+        Money.text = "Money: $" + _inst.Money + "/$" + _inst.Goal;
+    }
+    private void Update()
+    {
+        UpdateValues();
+    }
 }

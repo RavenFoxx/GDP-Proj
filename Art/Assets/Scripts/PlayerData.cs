@@ -10,6 +10,8 @@ public class PlayerData : MonoBehaviour
     public int Hunger;
     public int Happiness;
     public int Day;
+    public int Intelligence;
+    public int Goal;
     public string Name = "PlayerNameNotFound";
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class PlayerData : MonoBehaviour
             Energy = 100;
             Hunger = 50;
             Happiness = 50;
+            Goal = 3000;
         }
         else Destroy(gameObject);
     }

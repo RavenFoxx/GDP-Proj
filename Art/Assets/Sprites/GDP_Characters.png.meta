@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: 34777f1aa77c71d48a1cd17770af7ea9
+guid: 63df8970c7421504bb2d30c1311ab463
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 152175796294916766
-    second: GDP_SpriteSheet_Buttons_0
+      213: 3871412023913240519
+    second: GDP_Characters_0
   - first:
-      213: 1997258003695510290
-    second: GDP_SpriteSheet_Buttons_1
+      213: 5232069435405269633
+    second: GDP_Characters_1
   - first:
-      213: -3514285077154318147
-    second: GDP_SpriteSheet_Buttons_2
+      213: -3927734827202706015
+    second: GDP_Characters_2
   - first:
-      213: 1954527871832315739
-    second: GDP_SpriteSheet_Buttons_3
-  - first:
-      213: 3186269966787332872
-    second: GDP_SpriteSheet_Buttons_4
-  - first:
-      213: 1604879033301137668
-    second: GDP_SpriteSheet_Buttons_5
-  - first:
-      213: 1286002308169940678
-    second: GDP_SpriteSheet_Buttons_6
-  - first:
-      213: 2554719717681864384
-    second: GDP_SpriteSheet_Buttons_7
+      213: -4666092084443288274
+    second: GDP_Characters_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_0
+      name: GDP_Characters_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 26
+        x: 2
+        y: 0
+        width: 13
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9a12999413ac1200800000000000000
-      internalID: 152175796294916766
+      spriteID: 7c7568069b40ab530800000000000000
+      internalID: 3871412023913240519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_1
+      name: GDP_Characters_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 31
-        height: 31
+        x: 18
+        y: 0
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,83 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 213a31b829fa7bb10800000000000000
-      internalID: 1997258003695510290
+      spriteID: 18a72894e6b0c9840800000000000000
+      internalID: 5232069435405269633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_2
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 32
-        width: 31
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db8b2c08750ca3fc0800000000000000
-      internalID: -3514285077154318147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_3
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 32
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b575a207eb0ef1b10800000000000000
-      internalID: 1954527871832315739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_4
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 5
-        width: 25
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80bcad837a7e73c20800000000000000
-      internalID: 3186269966787332872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_5
+      name: GDP_Characters_2
       rect:
         serializedVersion: 2
         x: 34
-        y: 7
-        width: 28
-        height: 20
+        y: 0
+        width: 13
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 409f26f4afca54610800000000000000
-      internalID: 1604879033301137668
+      spriteID: 1a507a41cf1ed79c0800000000000000
+      internalID: -3927734827202706015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_6
+      name: GDP_Characters_3
       rect:
         serializedVersion: 2
-        x: 69
-        y: 6
-        width: 25
-        height: 25
+        x: 49
+        y: 0
+        width: 13
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,29 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ce3dc6294cc8d110800000000000000
-      internalID: 1286002308169940678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GDP_SpriteSheet_Buttons_7
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 3
-        width: 17
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ce1d193c00347320800000000000000
-      internalID: 2554719717681864384
+      spriteID: e2dee71a8f5be3fb0800000000000000
+      internalID: -4666092084443288274
       vertices: []
       indices: 
       edges: []
