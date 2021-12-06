@@ -7,12 +7,48 @@ using UnityEngine.UI;
 
 public class testfunctionality : MonoBehaviour
 {
+    //Buttons
+    public Button workButton;
+    public Button promotionButton;
+    public Button exitButton;
+    //Popups
+    public GameObject workPopup;
+    public GameObject promotionPopup;
+
     public int MoneyEarned = 100;
     public float minimumChanceToPromote = 0.1f;
     public float currentChanceToPromote;
     PlayerData _inst = PlayerData.Instance;
+    //Text
     public Text textDisplay;
-    
+    public Text WorkTextDisplay;
+    public Text PromotionTextDisplay;
+
+    public void showWorkPopup()
+    {
+        WorkTextDisplay.text = "Work to earn $" + MoneyEarned + " but lose 50 Energy?";
+        workPopup.SetActive(true);
+        workButton.interactable = false;
+        promotionButton.interactable = false;
+        exitButton.interactable = false;
+    }
+
+    public void hideWorkPopup()
+    {
+        workPopup.SetActive(false);
+        workButton.interactable = true;
+        promotionButton.interactable = true;
+        exitButton.interactable = true;
+    }
+    public void GoToWork()
+    {
+        StartCoroutine(Working());
+        workPopup.SetActive(false);
+        workButton.interactable = true;
+        promotionButton.interactable = true;
+        exitButton.interactable = true;
+    }
+
     private IEnumerator Working()
     {
         SceneManager.LoadSceneAsync("Workplace", LoadSceneMode.Additive);
@@ -21,10 +57,6 @@ public class testfunctionality : MonoBehaviour
         yield return new WaitForSecondsRealtime (5);
         SceneManager.UnloadSceneAsync("Workplace");
         Work();
-    }
-    public void GoToWork()
-    {
-        StartCoroutine(Working());      
     }
 
     public void Work()
@@ -38,6 +70,38 @@ public class testfunctionality : MonoBehaviour
         currentChanceToPromote += 0.1f;
     }
 
+    public void showPromotionPopup()
+    {
+        if (currentChanceToPromote < minimumChanceToPromote)
+        {
+            Debug.Log("Sorry, You do not meet the requirements!");
+            textDisplay.text = "Sorry, You do not meet the requirements!";
+        }
+        else
+        {
+            PromotionTextDisplay.text = "Current Chance to promote:" + currentChanceToPromote * 100 + "%" + "\n" + "Do you want to try and promote?";
+            promotionPopup.SetActive(true);
+            workButton.interactable = false;
+            promotionButton.interactable = false;
+            exitButton.interactable = false;
+        }
+
+    }
+    public void hidePromotionPopup()
+    {
+        promotionPopup.SetActive(false);
+        workButton.interactable = true;
+        promotionButton.interactable = true;
+        exitButton.interactable = true;
+    }
+    public void GoToPromote()
+    {
+        StartCoroutine(Promoting());
+        promotionPopup.SetActive(false);
+        workButton.interactable = true;
+        promotionButton.interactable = true;
+        exitButton.interactable = true;
+    }
     private IEnumerator Promoting()
     {
         SceneManager.LoadSceneAsync("PromotionScene", LoadSceneMode.Additive);
@@ -47,20 +111,7 @@ public class testfunctionality : MonoBehaviour
         SceneManager.UnloadSceneAsync("PromotionScene");
         Promotion();
     }
-
-    public void GoToPromote()
-    {
-        if(currentChanceToPromote < minimumChanceToPromote)
-        {
-            Debug.Log("Sorry, You do not meet the requirements!");
-            textDisplay.text = "Sorry, You do not meet the requirements!";
-        }
-        else
-        {
-            StartCoroutine(Promoting());
-        }
-        
-    } 
+ 
     public void Promotion()
     {
         if(PlayerData.Instance.Intelligence == 0f)
@@ -114,16 +165,6 @@ public class testfunctionality : MonoBehaviour
                 textDisplay.text = "Sorry, You have failed to promote!";
             }
         }
-    }
-
-    public void displayChance()
-    {
-        textDisplay.text = "Current Chance to promote:" + currentChanceToPromote * 100 + "%";
-    }
-
-    public void displayWorkingConditions()
-    {
-        textDisplay.text = "Work to earn $" + MoneyEarned + " but lose 50 Energy?"; 
     }
 
     //for player UI

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SuddenEvents : MonoBehaviour
 {
-    PlayerData playerData = PlayerData.Instance;
+    PlayerData _inst = PlayerData.Instance;
     public float Money = 100;
     public int Energy;
     public int Hunger;
@@ -26,70 +26,85 @@ public class SuddenEvents : MonoBehaviour
     }
     private void Start()
     {
-        if (SceneManager.GetSceneByName("SuddenEvents 1").isLoaded) SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 1"));
-        else if (SceneManager.GetSceneByName("SuddenEvents 2").isLoaded) SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 2"));
-        else if (SceneManager.GetSceneByName("SuddenEvents 3").isLoaded) SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 3"));
-        else if (SceneManager.GetSceneByName("SuddenEvents 4").isLoaded) SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 4"));
-        else if (SceneManager.GetSceneByName("SuddenEvents 5").isLoaded) SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 5"));
+        if (SceneManager.GetSceneByName("SuddenEvents 1").isLoaded) {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 1"));
+            popUpText.text = _inst.name + " realised that " + _inst.name + "'s current balance is 60 dollar short compared to the original balance.";
+        }
+        else if (SceneManager.GetSceneByName("SuddenEvents 2").isLoaded) {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 2"));
+            popUpText.text = _inst.name + "'s friend asked if " + _inst.name + " is keen to catch up while watching a movie.";
+        }
+        else if (SceneManager.GetSceneByName("SuddenEvents 3").isLoaded) {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 3"));
+            popUpText.text = _inst.name + "'s uncle asked " + _inst.name + " to help him pack and move his stuff into his new house.";
+        }
+        else if (SceneManager.GetSceneByName("SuddenEvents 4").isLoaded) {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 4"));
+            popUpText.text = _inst.name + "'s bag is getting old and " + _inst.name + " wants to get a new bag.";
+        }
+        else if (SceneManager.GetSceneByName("SuddenEvents 5").isLoaded) {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 5"));
+            popUpText.text = _inst.name + "'s friends has invited " + _inst.name + " to play basketball with them.";
+        }
         else Debug.Log("Scene out of bounds or not found");
     }
     public void Scenario1Yes()
     {
-        PlayerData.Instance.Energy -= 20;
-        PlayerData.Instance.Hunger -= 10;
-        popUpText.text = "bank replied there's an error on their part and gave 10 dollars as compensation";
+        _inst.Energy -= 20;
+        _inst.Hunger -= 10;
+        popUpText.text = "The bank has replied and said that there's an error on their part and they have fixed it as well as given an additional 10 dollars as compensation.";
     }
     public void Scenario1No()
     {
-        PlayerData.Instance.Money -= 60;
-        popUpText.text = "there's a hidden fee and tommy got charged 60 dollar without knowing, this could b avoid thru contacting the bank";
+        _inst.Money -= 60;
+        popUpText.text = "There's a hidden fee and " + _inst.name + " got charged 60 dollars without knowing, this could be avoided by contacting the bank.";
     }
     public void Scenario2Yes()
     {
-        PlayerData.Instance.Money -= 30;
-        PlayerData.Instance.Energy -= 20;
-        PlayerData.Instance.Hunger -= 20;
-        PlayerData.Instance.Happiness += 20;
-        popUpText.text = "you had fun for the day";
+        _inst.Money -= 30;
+        _inst.Energy -= 20;
+        _inst.Hunger -= 20;
+        _inst.Happiness += 20;
+        popUpText.text = _inst.name + " had fun for the day.";
     }
     public void Scenario2No()
     {
-        PlayerData.Instance.Happiness -= 10;
-        popUpText.text = " you felt a little sad as you decline his offer to hang out";
+        _inst.Happiness -= 10;
+        popUpText.text = _inst.name + " felt a little sad as " + _inst.name + " decline his friend's offer to hang out.";
     }
     public void Scenario3Yes()
     {
-        PlayerData.Instance.Money += 30;
-        PlayerData.Instance.Energy -= 20;
-        PlayerData.Instance.Hunger -= 20;
-        PlayerData.Instance.Happiness += 20;
-        popUpText.text = "gain 20 dollar as well as being treated a meal by your uncle)";
+        _inst.Money += 30;
+        _inst.Energy -= 20;
+        _inst.Hunger -= 20;
+        _inst.Happiness += 20;
+        popUpText.text = _inst.name + " have been treated to a meal as well as received 20 dollars from his uncle.";
     }
     public void Scenario3No()
     {
-        popUpText.text = "your uncle replied that he'll find someone else";
+        popUpText.text = _inst.name + "'s uncle replied that he'll find someone else.";
     }
     public void Scenario4Yes()
     {
-        PlayerData.Instance.Money -= 50;
-        PlayerData.Instance.Happiness += 20;
-        popUpText.text = "you like your new bag";
+        _inst.Money -= 50;
+        _inst.Happiness += 20;
+        popUpText.text = _inst.name + " like his new bag";
     }
     public void Scenario4No()
     {
-        PlayerData.Instance.Money -= 30;
-        popUpText.text = "you have a new bag";
+        _inst.Money -= 30;
+        popUpText.text = _inst.name + " have a new bag";
     }
     public void Scenario5Yes()
     {
-        PlayerData.Instance.Energy -= 40;
-        PlayerData.Instance.Happiness += 30;
-        popUpText.text = "you enjoyed playing basketball with your friends";
+        _inst.Energy -= 40;
+        _inst.Happiness += 30;
+        popUpText.text = _inst.name + " enjoyed playing basketball with his friends.";
     }
     public void Scenario5No()
     {
-        PlayerData.Instance.Happiness -= 10;
-        popUpText.text = "you're disheartened that you can't play";
+        _inst.Happiness -= 10;
+        popUpText.text = _inst.name + " is disheartened that he couldn't join his friends.";
     }
  
     public void closePopUp()
