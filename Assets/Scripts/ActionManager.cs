@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ActionManager : MonoBehaviour
 {
-    StoreData storeData = StoreData.Instance;
+    StoreData _store;
     PlayerData _inst;
     int day;
     bool EventStarted;
@@ -17,7 +17,8 @@ public class ActionManager : MonoBehaviour
     public Slider Happiness;
     public Slider ProgressBar;
     private void Awake() {
-        if(_inst == null) _inst = PlayerData.Instance;
+        if (_store == null) _store = StoreData.Instance;
+        if (_inst == null) _inst = PlayerData.Instance;
         ProgressBar.maxValue = _inst.Goal;
         NameText.text = _inst.Name;
         UpdateValues();
@@ -26,8 +27,8 @@ public class ActionManager : MonoBehaviour
         UpdateValues();
         if(day != _inst.Day) { //if proceeded into next day
             day = _inst.Day;
-            storeData.restockItems(); //these dont run when day passes
-            storeData.printAmountLeft(); //
+            _store.restockItems(); //these dont run when day passes
+            _store.printAmountLeft(); //
             if(day % 7 == 0) EventStarted = false;
             if(EventStarted == false) ChooseEvent();
         }

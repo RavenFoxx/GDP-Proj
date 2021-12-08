@@ -18,7 +18,7 @@ public class ShopManager : MonoBehaviour
     public void ExitShop()
     {
         SceneManager.UnloadSceneAsync("StoreAction");
-        //storeData.restockItems(); for testing if it works - it worked so problem is it doesnt run when the next day happens
+        //storeData.restockItems(); //for testing if it works - it worked so problem is it doesnt run when the next day happens
         //also idk why the noodles dont update? but the rest do
     }
 

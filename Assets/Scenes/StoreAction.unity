@@ -313,7 +313,7 @@ MonoBehaviour:
   hunger: 0
   happiness: 0
   intelligence: 2
-  amountLeft: 1
+  amountLeft: 0
   nameText: {fileID: 1095287652}
   descriptionText: {fileID: 1387409156}
   artworkImage: {fileID: 2141495675}
@@ -635,7 +635,7 @@ MonoBehaviour:
   hunger: 0
   happiness: 30
   intelligence: 0
-  amountLeft: 1
+  amountLeft: 0
   nameText: {fileID: 1095287652}
   descriptionText: {fileID: 1387409156}
   artworkImage: {fileID: 2141495675}
@@ -890,7 +890,7 @@ MonoBehaviour:
   hunger: 40
   happiness: 0
   intelligence: 0
-  amountLeft: 2
+  amountLeft: 0
   nameText: {fileID: 1095287652}
   descriptionText: {fileID: 1387409156}
   artworkImage: {fileID: 2141495675}
@@ -1385,7 +1385,7 @@ GameObject:
   - component: {fileID: 925943614}
   m_Layer: 5
   m_Name: Object 1
-  m_TagString: Cup Noodle
+  m_TagString: Cup Noodles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1516,8 +1516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7229aa6d7b93738438eafb7a425c543c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Cup Noodle
-  description: Cup noodle
+  name: Cup Noodles
+  description: A cup of noodles
   artwork: {fileID: 530042883849163695, guid: 363e47d6f5f3ce84f934fa88dc7380be, type: 3}
   artwork_bw: {fileID: -4612396069448211028, guid: 53ce94c2ca98cad4990f81ed94f7e63e, type: 3}
   cost: 15
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   hunger: 20
   happiness: 0
   intelligence: 0
-  amountLeft: 1
+  amountLeft: 0
   nameText: {fileID: 1095287652}
   descriptionText: {fileID: 1387409156}
   artworkImage: {fileID: 2141495675}
@@ -3920,7 +3920,7 @@ MonoBehaviour:
   hunger: 0
   happiness: 0
   intelligence: 0
-  amountLeft: 1
+  amountLeft: 0
   nameText: {fileID: 1095287652}
   descriptionText: {fileID: 1387409156}
   artworkImage: {fileID: 2141495675}
@@ -4678,7 +4678,7 @@ MonoBehaviour:
   hunger: 10
   happiness: 0
   intelligence: 0
-  amountLeft: 1
+  amountLeft: 0
   nameText: {fileID: 1095287652}
   descriptionText: {fileID: 1387409156}
   artworkImage: {fileID: 2141495675}
@@ -4866,7 +4866,7 @@ MonoBehaviour:
   hunger: 0
   happiness: 0
   intelligence: 5
-  amountLeft: 1
+  amountLeft: 0
   nameText: {fileID: 1095287652}
   descriptionText: {fileID: 1387409156}
   artworkImage: {fileID: 2141495675}
