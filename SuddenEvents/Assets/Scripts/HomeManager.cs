@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class HomeManager : MonoBehaviour
 {
+    PlayerData _inst = PlayerData.Instance;
     //Popups
     public GameObject bedPopup;
     public GameObject phonePopup;
@@ -71,16 +72,16 @@ public class HomeManager : MonoBehaviour
     public void SleepNow()
     {
         fadeNow = true;
-        PlayerData.Instance.Energy = 100;
-        PlayerData.Instance.Hunger -= hungerLoss;
-        PlayerData.Instance.Day += 1;
+        _inst.Energy = 100;
+        _inst.Hunger -= hungerLoss;
+        _inst.Day += 1;
 
         //checking values
-        Debug.Log("Energy is " + PlayerData.Instance.Energy);
-        Debug.Log("Happinesss is " + PlayerData.Instance.Happiness);
-        Debug.Log("Money is " + PlayerData.Instance.Money);
-        Debug.Log("Hunger is " + PlayerData.Instance.Hunger);
-        Debug.Log("Day " + PlayerData.Instance.Day);
+        Debug.Log("Energy is " + _inst.Energy);
+        Debug.Log("Happinesss is " + _inst.Happiness);
+        Debug.Log("Money is " + _inst.Money);
+        Debug.Log("Hunger is " + _inst.Hunger);
+        Debug.Log("Day " + _inst.Day);
         DisableBedPopup();
     }
 
@@ -102,25 +103,25 @@ public class HomeManager : MonoBehaviour
     }
     public void CallingDelivery()
     {
-        PlayerData.Instance.Money -= moneyTaken;
-        PlayerData.Instance.Happiness += happinessGain;
-        PlayerData.Instance.Hunger += hungerGain;
+        _inst.Money -= moneyTaken;
+        _inst.Happiness += happinessGain;
+        _inst.Hunger += hungerGain;
 
-        if (PlayerData.Instance.Happiness > 50)
+        if (_inst.Happiness > 50)
         {
-            PlayerData.Instance.Happiness = 50;
+            _inst.Happiness = 50;
         }
 
-        if (PlayerData.Instance.Hunger > 50)
+        if (_inst.Hunger > 50)
         {
-            PlayerData.Instance.Hunger = 50;
+            _inst.Hunger = 50;
         }
 
         //check values
-        Debug.Log("Energy is " + PlayerData.Instance.Energy);
-        Debug.Log("Happinesss is " + PlayerData.Instance.Happiness);
-        Debug.Log("Hunger is " + PlayerData.Instance.Hunger);
-        Debug.Log("Money is " + PlayerData.Instance.Money);
+        Debug.Log("Energy is " + _inst.Energy);
+        Debug.Log("Happinesss is " + _inst.Happiness);
+        Debug.Log("Hunger is " + _inst.Hunger);
+        Debug.Log("Money is " + _inst.Money);
         DisablePhonePopup();
     }
 
@@ -141,16 +142,16 @@ public class HomeManager : MonoBehaviour
     }
     public void BrowsingOnline()
     {
-        PlayerData.Instance.Energy -= energyTaken;
-        PlayerData.Instance.Happiness += comHappinessGain;
+        _inst.Energy -= energyTaken;
+        _inst.Happiness += comHappinessGain;
 
-        if (PlayerData.Instance.Happiness > 50)
+        if (_inst.Happiness > 50)
         {
-            PlayerData.Instance.Happiness = 50;
+            _inst.Happiness = 50;
         }
 
-        Debug.Log("Energy is " + PlayerData.Instance.Energy);
-        Debug.Log("Happinesss is " + PlayerData.Instance.Happiness);
+        Debug.Log("Energy is " + _inst.Energy);
+        Debug.Log("Happinesss is " + _inst.Happiness);
         DisableComPopup();
     }
 
@@ -158,10 +159,21 @@ public class HomeManager : MonoBehaviour
     public void LeaveHome()
     {
         SceneManager.UnloadSceneAsync("HomeAction");
-        Debug.Log("Total Energy is " + PlayerData.Instance.Energy);
-        Debug.Log("Total Happinesss is " + PlayerData.Instance.Happiness);
-        Debug.Log("Total Hunger is " + PlayerData.Instance.Hunger);
-        Debug.Log("Total Money is " + PlayerData.Instance.Money);
+        Debug.Log("Total Energy is " + _inst.Energy);
+        Debug.Log("Total Happinesss is " + _inst.Happiness);
+        Debug.Log("Total Hunger is " + _inst.Hunger);
+        Debug.Log("Total Money is " + _inst.Money);
     }
-    
+    //for player UI
+    public Text Money;
+    public Slider Energy;
+    public Slider Hunger;
+    public Slider Happiness;
+    public void UpdateValues()
+    {
+        Energy.value = (float)_inst.Energy / 100;
+        Hunger.value = (float)_inst.Hunger / 100;
+        Happiness.value = (float)_inst.Happiness / 100;
+        Money.text = "Money: $" + _inst.Money;
+    }
 }

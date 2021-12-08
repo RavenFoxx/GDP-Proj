@@ -57,4 +57,20 @@ public class ShopManager : MonoBehaviour
         print("Happiness: " + playerData.Happiness);
         print("Intelligence: " + playerData.Intelligence);
     }
+    //for player UI
+    public Text Money;
+    public Slider Energy;
+    public Slider Hunger;
+    public Slider Happiness;
+    public void UpdateValues()
+    {
+        Energy.value = (float)playerData.Energy / 100;
+        Hunger.value = (float)playerData.Hunger / 100;
+        Happiness.value = (float)playerData.Happiness / 100;
+        Money.text = "Money: $" + playerData.Money;
+    }
+    private void Update()
+    {
+        UpdateValues();
+    }
 }
