@@ -16,39 +16,33 @@ public class ActionManager : MonoBehaviour
     public Slider Hunger;
     public Slider Happiness;
     public Slider ProgressBar;
-    public GameObject IntroPopup;
-    public GameObject WinPopup;
-    public GameObject LosePopup;
     private void Awake() {
         if (_store == null) _store = StoreData.Instance;
         if (_inst == null) _inst = PlayerData.Instance;
-        IntroPopup.SetActive(true);
         ProgressBar.maxValue = _inst.Goal;
-        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
+        NameText.text = _inst.Name;
         UpdateValues();
     }
     private void Update() {
         UpdateValues();
         if(day != _inst.Day) { //if proceeded into next day
             day = _inst.Day;
-            _store.restockItems();
-            _store.printAmountLeft();
+            _store.restockItems(); //these dont run when day passes
+            _store.printAmountLeft(); //
             if(day % 7 == 0) EventStarted = false;
             if(EventStarted == false) ChooseEvent();
         }
-        CheckGameState();
     }
     public void EnterHome() { SceneManager.LoadSceneAsync("HomeAction", LoadSceneMode.Additive); }
     public void EnterWorkplace() { SceneManager.LoadSceneAsync("WorkplaceAction", LoadSceneMode.Additive); }
     public void EnterBank() { SceneManager.LoadSceneAsync("BankAction", LoadSceneMode.Additive); }
     public void EnterStore() { SceneManager.LoadSceneAsync("StoreAction", LoadSceneMode.Additive); }
     public void UpdateValues() {
-        NameText.text = _inst.Name;
         Energy.value = (float)_inst.Energy / 100;
         Hunger.value = (float)_inst.Hunger / 100;
         Happiness.value = (float)_inst.Happiness / 100;
         ProgressBar.value = _inst.Money;
-        OtherInfoText.text = "Day " + _inst.Day + " | Money: $" + _inst.Money;
+        OtherInfoText.text = "Day " + _inst.Day + "\nMoney: $" + _inst.Money;
     }
     public void ChooseEvent() {
         int minchance = 0;
@@ -83,14 +77,6 @@ public class ActionManager : MonoBehaviour
                     Debug.Log("Scenario chose out of bounds");
                     break;
             }
-        }
-    }
-    void CheckGameState() {
-        if (_inst.Day >= 31 && _inst.Money < _inst.Goal) {
-            LosePopup.SetActive(true);
-        }
-        else if (_inst.Money > _inst.Goal) {
-            WinPopup.SetActive(true);
         }
     }
 }
