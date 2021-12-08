@@ -30,6 +30,7 @@ public class HomeManager : MonoBehaviour
     public int comHappinessGain = 20;
     public int energyTaken = 30;
 
+
     // Update is called once per frame
     void Update()
     {

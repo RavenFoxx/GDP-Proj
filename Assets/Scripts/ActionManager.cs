@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ActionManager : MonoBehaviour
 {
+    StoreData storeData = StoreData.Instance;
     PlayerData _inst;
     int day;
     bool EventStarted;
@@ -25,6 +26,8 @@ public class ActionManager : MonoBehaviour
         UpdateValues();
         if(day != _inst.Day) { //if proceeded into next day
             day = _inst.Day;
+            storeData.restockItems(); //these dont run when day passes
+            storeData.printAmountLeft(); //
             if(day % 7 == 0) EventStarted = false;
             if(EventStarted == false) ChooseEvent();
         }
@@ -47,7 +50,7 @@ public class ActionManager : MonoBehaviour
         else if(chance == 7) {
             EventStarted = true;
             minchance = 0;
-            switch((int)Random.RandomRange(1, 6))
+            switch((int)Random.Range(1, 6))
             {
                 case 1:
                     SceneManager.LoadSceneAsync("SuddenEvents 1", LoadSceneMode.Additive);
