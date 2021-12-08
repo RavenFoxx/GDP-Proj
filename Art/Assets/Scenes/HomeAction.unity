@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265, y: 33}
+  m_AnchoredPosition: {x: -265, y: 11.42}
   m_SizeDelta: {x: 176.0754, y: 115.3727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &70229839
@@ -839,7 +839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &366176856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -857,8 +857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 1, y: -95.91948}
+  m_SizeDelta: {x: 100, y: 90.0805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366176857
 MonoBehaviour:
@@ -1423,7 +1423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &504934560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1669,6 +1669,10 @@ MonoBehaviour:
   moneyTaken: 25
   comHappinessGain: 20
   energyTaken: 30
+  Money: {fileID: 1189763110}
+  Energy: {fileID: 776944824}
+  Hunger: {fileID: 449285065}
+  Happiness: {fileID: 512839800}
 --- !u!4 &683643126
 Transform:
   m_ObjectHideFlags: 0
@@ -1924,7 +1928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 266, y: 36.734}
+  m_AnchoredPosition: {x: 249, y: 38}
   m_SizeDelta: {x: 132.4966, y: 122.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &814398630
@@ -2056,8 +2060,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.000005722, y: -96.30101}
+  m_SizeDelta: {x: 100, y: 89.699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866347274
 MonoBehaviour:
@@ -2574,7 +2578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5e3f7b1aa0fa7c24cafa3d9b9e92463c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a50a18a8cb27dc8429ddb8e19efb4cee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2737,7 +2741,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Money:$Money/$Goal
+  m_Text: 'Money: $Money'
 --- !u!222 &1189763111
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3017,8 +3021,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -1.2753, y: -96.44046}
+  m_SizeDelta: {x: 100, y: 89.5595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1371946064
 GameObject:
@@ -3783,9 +3787,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Are you sure you want to sleep?
-
-    Sleeping will end the current day.'
+  m_Text: "Sleeping will restore your \nenergy and go to the next day\nAre you sure
+    you want to sleep?"
 --- !u!222 &1650386892
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4113,7 +4116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 297.1554, y: -128.77707}
+  m_AnchoredPosition: {x: 0, y: 93.8}
   m_SizeDelta: {x: 97.4493, y: 141.0816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882871869

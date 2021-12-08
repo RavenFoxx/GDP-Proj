@@ -15,8 +15,8 @@ public class BankAction : MonoBehaviour
     public GameObject withdrawPopoutMsg;
     PlayerData _inst = PlayerData.Instance;
     private void Awake() {
-        monehText.text = "$" + BankedMoney.ToString();
-        textboxText.text = "You entered BankName. What will you do?";
+        monehText.text = "Account balance: $" + BankedMoney.ToString();
+        textboxText.text = "You entered BankCent. What will you do?";
     }
     public void DepositAmt() {
         float amt = 0;
@@ -76,7 +76,7 @@ public class BankAction : MonoBehaviour
     }
     public void ExitBank()
     {
-        textboxText.text = "You leave the bank.";
+        textboxText.text = "You left BankCent.";
         SceneManager.UnloadSceneAsync("BankAction");
     }
     //for player UI
@@ -89,7 +89,7 @@ public class BankAction : MonoBehaviour
         Energy.value = (float)_inst.Energy / 100;
         Hunger.value = (float)_inst.Hunger / 100;
         Happiness.value = (float)_inst.Happiness / 100;
-        Money.text = "Money: $" + _inst.Money + "/$" + _inst.Goal;
+        Money.text = "Money: $" + _inst.Money;
     }
     private void Update()
     {
