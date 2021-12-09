@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Stuff : MonoBehaviour
 {
-    //StoreData storeData = StoreData.Instance;
+    StoreData storeData = StoreData.Instance;
 
     public new string name;
     public string description;
@@ -37,9 +37,14 @@ public class Stuff : MonoBehaviour
     {
 
     }
+
+    public void Start()
+    {
+        amountLeft = storeData.getAmount(this.name);
+        print(this.name + amountLeft);
+    }
     public void DisplayStats()
     {
-        //storeData.updateAmount(this.name, this.amountLeft);
         nameText.text = this.name;
         descriptionText.text = this.description;
         if (amountLeft != 0) artworkImage.sprite = this.artwork;

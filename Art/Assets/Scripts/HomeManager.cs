@@ -11,6 +11,9 @@ public class HomeManager : MonoBehaviour
     public GameObject bedPopup;
     public GameObject phonePopup;
     public GameObject compPopup;
+    public GameObject infoPopup;
+    //Text
+    public Text text;
     //Buttons
     public Button bedBtn;
     public Button phoneBtn; 
@@ -78,11 +81,11 @@ public class HomeManager : MonoBehaviour
         _inst.Day += 1;
 
         //checking values
-        Debug.Log("Energy is " + _inst.Energy);
-        Debug.Log("Happinesss is " + _inst.Happiness);
-        Debug.Log("Money is " + _inst.Money);
-        Debug.Log("Hunger is " + _inst.Hunger);
-        Debug.Log("Day " + _inst.Day);
+        //Debug.Log("Energy is " + _inst.Energy);
+        //Debug.Log("Happinesss is " + _inst.Happiness);
+        //Debug.Log("Money is " + _inst.Money);
+        //Debug.Log("Hunger is " + _inst.Hunger);
+        //Debug.Log("Day " + _inst.Day);
         DisableBedPopup();
     }
 
@@ -104,26 +107,36 @@ public class HomeManager : MonoBehaviour
     }
     public void CallingDelivery()
     {
-        _inst.Money -= moneyTaken;
-        _inst.Happiness += happinessGain;
-        _inst.Hunger += hungerGain;
-
-        if (_inst.Happiness > 50)
+        if (_inst.Money >= 25)
         {
-            _inst.Happiness = 50;
-        }
+            _inst.Money -= moneyTaken;
+            _inst.Happiness += happinessGain;
+            _inst.Hunger += hungerGain;
 
-        if (_inst.Hunger > 50)
+            if (_inst.Happiness > 50)
+            {
+                _inst.Happiness = 50;
+            }
+
+            if (_inst.Hunger > 50)
+            {
+                _inst.Hunger = 50;
+            }
+
+            //check values
+            //Debug.Log("Energy is " + _inst.Energy);
+            //Debug.Log("Happinesss is " + _inst.Happiness);
+            //Debug.Log("Hunger is " + _inst.Hunger);
+            //Debug.Log("Money is " + _inst.Money);
+            DisablePhonePopup();
+        }
+        else
         {
-            _inst.Hunger = 50;
-        }
+            DisablePhonePopup();
+            infoPopup.SetActive(true);
+            text.text = "You have no more money!";
 
-        //check values
-        Debug.Log("Energy is " + _inst.Energy);
-        Debug.Log("Happinesss is " + _inst.Happiness);
-        Debug.Log("Hunger is " + _inst.Hunger);
-        Debug.Log("Money is " + _inst.Money);
-        DisablePhonePopup();
+        }
     }
 
     //Computer
@@ -143,27 +156,42 @@ public class HomeManager : MonoBehaviour
     }
     public void BrowsingOnline()
     {
-        _inst.Energy -= energyTaken;
-        _inst.Happiness += comHappinessGain;
-
-        if (_inst.Happiness > 50)
+        if(_inst.Energy >= 30)
         {
-            _inst.Happiness = 50;
-        }
+            _inst.Energy -= energyTaken;
+            _inst.Happiness += comHappinessGain;
 
-        Debug.Log("Energy is " + _inst.Energy);
-        Debug.Log("Happinesss is " + _inst.Happiness);
-        DisableComPopup();
+            if (_inst.Happiness > 50)
+            {
+                _inst.Happiness = 50;
+            }
+
+            //Debug.Log("Energy is " + _inst.Energy);
+            //Debug.Log("Happinesss is " + _inst.Happiness);
+            DisableComPopup();
+        }
+        else
+        {
+            DisableComPopup();
+            infoPopup.SetActive(true);
+            text.text = "You have no more Energy!";
+        }
+    }
+    //infoPopup
+
+    public void Okay()
+    {
+        infoPopup.SetActive(false);
     }
 
     //Door
     public void LeaveHome()
     {
         SceneManager.UnloadSceneAsync("HomeAction");
-        Debug.Log("Total Energy is " + _inst.Energy);
-        Debug.Log("Total Happinesss is " + _inst.Happiness);
-        Debug.Log("Total Hunger is " + _inst.Hunger);
-        Debug.Log("Total Money is " + _inst.Money);
+        //Debug.Log("Total Energy is " + _inst.Energy);
+        //Debug.Log("Total Happinesss is " + _inst.Happiness);
+        //Debug.Log("Total Hunger is " + _inst.Hunger);
+        //Debug.Log("Total Money is " + _inst.Money);
     }
     //for player UI
     public Text Money;

@@ -97,6 +97,7 @@ public class testfunctionality : MonoBehaviour
     public void GoToPromote()
     {
         StartCoroutine(Promoting());
+        Promotion();
         promotionPopup.SetActive(false);
         workButton.interactable = true;
         promotionButton.interactable = true;
@@ -111,7 +112,7 @@ public class testfunctionality : MonoBehaviour
         SceneManager.UnloadSceneAsync("PromotionScene");
         Promotion();
     }
- 
+
     public void Promotion()
     {
         if(PlayerData.Instance.Intelligence == 0f)
@@ -124,6 +125,7 @@ public class testfunctionality : MonoBehaviour
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
                 MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
+                
             }
             if(randomNumber < currentChanceToPromote)
             {
@@ -131,12 +133,14 @@ public class testfunctionality : MonoBehaviour
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
                 MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
+                
             }
             else if (randomNumber > currentChanceToPromote)
             {
                 Debug.Log("Sorry, You have failed to promote!");
                 currentChanceToPromote -= 0.05f;
                 textDisplay.text = "Sorry, You have failed to promote!";
+                
             }
         }
         else if(PlayerData.Instance.Intelligence > 0f)
@@ -150,6 +154,7 @@ public class testfunctionality : MonoBehaviour
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
                 MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
+                
             }
             if (randomNumber < currentChanceToPromote)
             {
@@ -157,6 +162,7 @@ public class testfunctionality : MonoBehaviour
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
                 MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
+                
             }
             else if (randomNumber > currentChanceToPromote)
             {

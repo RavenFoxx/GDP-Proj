@@ -12,7 +12,7 @@ public class PlayerData : MonoBehaviour
     public int Day;
     public int Intelligence;
     public int Goal;
-    public string Name = "PlayerNameNotFound";
+    public string Name;
     private void Awake()
     {
         if (Instance == null) {

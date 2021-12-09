@@ -18,6 +18,8 @@ public class ShopManager : MonoBehaviour
     public void ExitShop()
     {
         SceneManager.UnloadSceneAsync("StoreAction");
+        //storeData.restockItems(); //for testing if it works - it worked so problem is it doesnt run when the next day happens
+        //also idk why the noodles dont update? but the rest do
     }
 
     public void onPurchase()
@@ -36,7 +38,7 @@ public class ShopManager : MonoBehaviour
                 playerData.Intelligence += selectedStuff.intelligence;
                 selectedStuff.amountLeft--;
                 selectedStuff.DisplayStats();
-                //storeData.updateAmount(selectedStuff.name, selectedStuff.amountLeft);
+                storeData.updateAmount(selectedStuff.name, selectedStuff.amountLeft);
                 printData();
             }
             else
