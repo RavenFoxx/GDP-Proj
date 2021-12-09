@@ -42,11 +42,22 @@ public class testfunctionality : MonoBehaviour
     }
     public void GoToWork()
     {
-        StartCoroutine(Working());
-        workPopup.SetActive(false);
-        workButton.interactable = true;
-        promotionButton.interactable = true;
-        exitButton.interactable = true;
+        if(PlayerData.Instance.Energy < 50)
+        {
+            workPopup.SetActive(false);
+            workButton.interactable = true;
+            promotionButton.interactable = true;
+            exitButton.interactable = true;
+            textDisplay.text = "You do not have enough energy to go to work!";
+        }
+        if(PlayerData.Instance.Energy >= 50)
+        {
+            StartCoroutine(Working());
+            workPopup.SetActive(false);
+            workButton.interactable = true;
+            promotionButton.interactable = true;
+            exitButton.interactable = true;
+        }
     }
 
     private IEnumerator Working()
