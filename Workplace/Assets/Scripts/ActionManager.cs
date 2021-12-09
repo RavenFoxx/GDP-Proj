@@ -9,6 +9,7 @@ public class ActionManager : MonoBehaviour
     StoreData _store;
     PlayerData _inst;
     int day;
+    int minchance = 0;
     bool EventStarted;
     public Text OtherInfoText;
     public Text NameText;
@@ -16,12 +17,14 @@ public class ActionManager : MonoBehaviour
     public Slider Hunger;
     public Slider Happiness;
     public Slider ProgressBar;
+    public GameObject Dim;
     public GameObject IntroPopup;
     public GameObject WinPopup;
     public GameObject LosePopup;
     private void Awake() {
         if (_store == null) _store = StoreData.Instance;
         if (_inst == null) _inst = PlayerData.Instance;
+        Dim.SetActive(true);
         IntroPopup.SetActive(true);
         ProgressBar.maxValue = _inst.Goal;
         SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
@@ -51,7 +54,6 @@ public class ActionManager : MonoBehaviour
         OtherInfoText.text = "Day " + _inst.Day + " | Money: $" + _inst.Money;
     }
     public void ChooseEvent() {
-        int minchance = 0;
         int chance = Random.Range(1 + minchance, 8);
         if(chance != 7) minchance++;
         else if(chance == 7) {
@@ -86,10 +88,12 @@ public class ActionManager : MonoBehaviour
         }
     }
     void CheckGameState() {
-        if (_inst.Day >= 31 && _inst.Money < _inst.Goal) {
+        if ((_inst.Day >= 31 && _inst.Money < _inst.Goal) || (_inst.Hunger <= 0)) {
+            Dim.SetActive(true);
             LosePopup.SetActive(true);
         }
         else if (_inst.Money > _inst.Goal) {
+            Dim.SetActive(true);
             WinPopup.SetActive(true);
         }
     }

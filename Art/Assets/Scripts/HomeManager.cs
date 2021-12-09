@@ -43,6 +43,7 @@ public class HomeManager : MonoBehaviour
             Invoke("fadeIn", 1f);
             fadeNow = false;
         }
+        UpdateValues();
     }
     //Fade animation
     private void fadeOut()
