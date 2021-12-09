@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class Stuff : MonoBehaviour
 {
-    StoreData storeData = StoreData.Instance;
+    private PlayerData playerData;
 
     public new string name;
     public string description;
 
     public Sprite artwork;
-    public Sprite artwork_bw;
 
     public int cost;
     public int energy;
@@ -19,7 +18,6 @@ public class Stuff : MonoBehaviour
     public int happiness;
     public int intelligence;
     public int amountLeft;
-
 
     public Text nameText;
     public Text descriptionText;
@@ -33,22 +31,27 @@ public class Stuff : MonoBehaviour
     public Text intelligenceText;
     public Text amountLeftText;
 
-    public void Awake()
+    void Awake()
+    {
+        playerData = FindObjectOfType<PlayerData>();
+    }
+    // Start is called before the first frame update
+    void Start()
     {
 
     }
 
-    public void Start()
+    // Update is called once per frame
+    void Update()
     {
-        amountLeft = storeData.getAmount(this.name);
-        print(this.name + amountLeft);
+        
     }
+
     public void DisplayStats()
     {
         nameText.text = this.name;
         descriptionText.text = this.description;
-        if (amountLeft != 0) artworkImage.sprite = this.artwork;
-        else artworkImage.sprite = this.artwork_bw;
+        artworkImage.sprite = this.artwork;
 
         costText.text = "Cost: $" + this.cost.ToString();
         energyText.text = "Energy: " + this.energy.ToString();
@@ -58,5 +61,14 @@ public class Stuff : MonoBehaviour
         amountLeftText.text = "Amount left: " + this.amountLeft.ToString();
     }
 
+    public void UpdateStats()
+    {
 
+    }
+
+    public string GetStuff()
+    {
+        return gameObject.tag;
+    }
+    // object ideas: energy drink, suit (wear to increase promotion chance), 
 }

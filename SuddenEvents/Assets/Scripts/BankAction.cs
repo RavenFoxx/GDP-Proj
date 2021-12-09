@@ -89,7 +89,7 @@ public class BankAction : MonoBehaviour
         Energy.value = (float)_inst.Energy / 100;
         Hunger.value = (float)_inst.Hunger / 100;
         Happiness.value = (float)_inst.Happiness / 100;
-        Money.text = "Account balance: $" + _inst.Money;
+        Money.text = "Money: $" + _inst.Money;
     }
     private void Update()
     {

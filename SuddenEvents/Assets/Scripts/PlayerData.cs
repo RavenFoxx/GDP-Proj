@@ -12,20 +12,17 @@ public class PlayerData : MonoBehaviour
     public int Day;
     public int Intelligence;
     public int Goal;
-    public int Wage;
-    public string Name;
+    public string Name = "PlayerNameNotFound";
     private void Awake()
     {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Day = 1;
             Money = 300;
             Energy = 100;
             Hunger = 50;
             Happiness = 50;
             Goal = 3000;
-            Wage = 100;
         }
         else Destroy(gameObject);
     }

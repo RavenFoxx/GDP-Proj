@@ -13,7 +13,7 @@ public class SuddenEvents : MonoBehaviour
     public int Hunger;
     public int Happiness;
     public GameObject popUpBox;
-    public Animator animator;
+    
     public Text popUpText;
     public Button yesButton;
     public Button noButton;
@@ -22,29 +22,29 @@ public class SuddenEvents : MonoBehaviour
     {
         popUpBox.SetActive(true);
         popUpText.text = text;
-        animator.SetTrigger("pop");
+       
     }
     private void Start()
     {
         if (SceneManager.GetSceneByName("SuddenEvents 1").isLoaded) {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 1"));
-            popUpText.text = _inst.Name + " realised that " + _inst.Name + "'s current balance is 60 dollar short compared to the original balance.";
+            popUpText.text = _inst.name + " realised that " + _inst.name + "'s current balance is 60 dollar short compared to the original balance.";
         }
         else if (SceneManager.GetSceneByName("SuddenEvents 2").isLoaded) {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 2"));
-            popUpText.text = _inst.Name + "'s friend asked if " + _inst.Name + " is keen to catch up while watching a movie.";
+            popUpText.text = _inst.name + "'s friend asked if " + _inst.name + " is keen to catch up while watching a movie.";
         }
         else if (SceneManager.GetSceneByName("SuddenEvents 3").isLoaded) {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 3"));
-            popUpText.text = _inst.Name + "'s uncle asked " + _inst.Name + " to help him pack and move his stuff into his new house.";
+            popUpText.text = _inst.name + "'s uncle asked " + _inst.name + " to help him pack and move his stuff into his new house.";
         }
         else if (SceneManager.GetSceneByName("SuddenEvents 4").isLoaded) {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 4"));
-            popUpText.text = _inst.Name + "'s bag is getting old and " + _inst.Name + " wants to get a new bag.";
+            popUpText.text = _inst.name + "'s bag is getting old and " + _inst.name + " wants to get a new bag.";
         }
         else if (SceneManager.GetSceneByName("SuddenEvents 5").isLoaded) {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("SuddenEvents 5"));
-            popUpText.text = _inst.Name + "'s friends has invited " + _inst.Name + " to play basketball with them.";
+            popUpText.text = _inst.name + "'s friends has invited " + _inst.name + " to play basketball with them.";
         }
         else Debug.Log("Scene out of bounds or not found");
     }
@@ -57,7 +57,7 @@ public class SuddenEvents : MonoBehaviour
     public void Scenario1No()
     {
         _inst.Money -= 60;
-        popUpText.text = "There's a hidden fee and " + _inst.Name + " got charged 60 dollars without knowing, this could be avoided by contacting the bank.";
+        popUpText.text = "There's a hidden fee and " + _inst.name + " got charged 60 dollars without knowing, this could be avoided by contacting the bank.";
     }
     public void Scenario2Yes()
     {
@@ -65,12 +65,12 @@ public class SuddenEvents : MonoBehaviour
         _inst.Energy -= 20;
         _inst.Hunger -= 20;
         _inst.Happiness += 20;
-        popUpText.text = _inst.Name + " had fun for the day.";
+        popUpText.text = _inst.name + " had fun for the day.";
     }
     public void Scenario2No()
     {
         _inst.Happiness -= 10;
-        popUpText.text = _inst.Name + " felt a little sad as " + _inst.Name + " decline his friend's offer to hang out.";
+        popUpText.text = _inst.name + " felt a little sad as " + _inst.name + " decline his friend's offer to hang out.";
     }
     public void Scenario3Yes()
     {
@@ -78,33 +78,33 @@ public class SuddenEvents : MonoBehaviour
         _inst.Energy -= 20;
         _inst.Hunger -= 20;
         _inst.Happiness += 20;
-        popUpText.text = _inst.Name + " have been treated to a meal as well as received 20 dollars from his uncle.";
+        popUpText.text = _inst.name + " have been treated to a meal as well as received 20 dollars from his uncle.";
     }
     public void Scenario3No()
     {
-        popUpText.text = _inst.Name + "'s uncle replied that he'll find someone else.";
+        popUpText.text = _inst.name + "'s uncle replied that he'll find someone else.";
     }
     public void Scenario4Yes()
     {
         _inst.Money -= 50;
         _inst.Happiness += 20;
-        popUpText.text = _inst.Name + " like his new bag";
+        popUpText.text = _inst.name + " like his new bag";
     }
     public void Scenario4No()
     {
         _inst.Money -= 30;
-        popUpText.text = _inst.Name + " have a new bag";
+        popUpText.text = _inst.name + " have a new bag";
     }
     public void Scenario5Yes()
     {
         _inst.Energy -= 40;
         _inst.Happiness += 30;
-        popUpText.text = _inst.Name + " enjoyed playing basketball with his friends.";
+        popUpText.text = _inst.name + " enjoyed playing basketball with his friends.";
     }
     public void Scenario5No()
     {
         _inst.Happiness -= 10;
-        popUpText.text = _inst.Name + " is disheartened that he couldn't join his friends.";
+        popUpText.text = _inst.name + " is disheartened that he couldn't join his friends.";
     }
  
     public void closePopUp()

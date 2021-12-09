@@ -7,24 +7,23 @@ using UnityEngine.SceneManagement;
 public class ShopManager : MonoBehaviour
 {
     PlayerData playerData = PlayerData.Instance;
-    StoreData storeData = StoreData.Instance;
     public Text nameText;
+    public GameObject selectedObject;
+
 
     private void Awake()
     {
         playerData = FindObjectOfType<PlayerData>();
-        
     }
     public void ExitShop()
     {
         SceneManager.UnloadSceneAsync("StoreAction");
-        //storeData.restockItems(); //for testing if it works - it worked so problem is it doesnt run when the next day happens
-        //also idk why the noodles dont update? but the rest do
     }
 
-    public void onPurchase()
+    public void onPurchase() // fix this so it only deducts from the selected
     {
-        Stuff selectedStuff = GameObject.FindGameObjectWithTag(nameText.text).GetComponent<Stuff>();
+        selectedObject = GameObject.FindGameObjectWithTag(nameText.text);
+        var selectedStuff = selectedObject.GetComponent<Stuff>();
         if (playerData.Money >= selectedStuff.cost)
         {
             if (selectedStuff.amountLeft > 0)
@@ -37,8 +36,6 @@ public class ShopManager : MonoBehaviour
                 playerData.Happiness += selectedStuff.happiness;
                 playerData.Intelligence += selectedStuff.intelligence;
                 selectedStuff.amountLeft--;
-                selectedStuff.DisplayStats();
-                storeData.updateAmount(selectedStuff.name, selectedStuff.amountLeft);
                 printData();
             }
             else

@@ -15,6 +15,7 @@ public class testfunctionality : MonoBehaviour
     public GameObject workPopup;
     public GameObject promotionPopup;
 
+    public int MoneyEarned = 100;
     public float minimumChanceToPromote = 0.1f;
     public float currentChanceToPromote;
     PlayerData _inst = PlayerData.Instance;
@@ -25,7 +26,7 @@ public class testfunctionality : MonoBehaviour
 
     public void showWorkPopup()
     {
-        WorkTextDisplay.text = "Work to earn $" + _inst.Wage + " but lose 50 Energy?";
+        WorkTextDisplay.text = "Work to earn $" + MoneyEarned + " but lose 50 Energy?";
         workPopup.SetActive(true);
         workButton.interactable = false;
         promotionButton.interactable = false;
@@ -41,22 +42,11 @@ public class testfunctionality : MonoBehaviour
     }
     public void GoToWork()
     {
-        if(PlayerData.Instance.Energy < 50)
-        {
-            workPopup.SetActive(false);
-            workButton.interactable = true;
-            promotionButton.interactable = true;
-            exitButton.interactable = true;
-            textDisplay.text = "You do not have enough energy to go to work!";
-        }
-        if(PlayerData.Instance.Energy >= 50)
-        {
-            StartCoroutine(Working());
-            workPopup.SetActive(false);
-            workButton.interactable = true;
-            promotionButton.interactable = true;
-            exitButton.interactable = true;
-        }
+        StartCoroutine(Working());
+        workPopup.SetActive(false);
+        workButton.interactable = true;
+        promotionButton.interactable = true;
+        exitButton.interactable = true;
     }
 
     private IEnumerator Working()
@@ -71,9 +61,9 @@ public class testfunctionality : MonoBehaviour
 
     public void Work()
     {
-        PlayerData.Instance.Money += _inst.Wage;
+        PlayerData.Instance.Money += MoneyEarned;
         Debug.Log("You earned $100 from working today!");
-        textDisplay.text = "You earned $" + _inst.Wage + " from working today!" + "\n" + "You lost 50 energy from working!";
+        textDisplay.text = "You earned $" + MoneyEarned + " from working today!" + "\n" + "You lost 50 energy from working!";
         PlayerData.Instance.Energy -= 50;
         Debug.Log("You lost 50 energy from working.");
         //textDisplay.text = " You lost 50 energy from working!";
@@ -132,14 +122,14 @@ public class testfunctionality : MonoBehaviour
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
-                _inst.Wage += 50;
+                MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
             }
             if(randomNumber < currentChanceToPromote)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
-                _inst.Wage += 50;
+                MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
             }
             else if (randomNumber > currentChanceToPromote)
@@ -158,14 +148,14 @@ public class testfunctionality : MonoBehaviour
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
-                _inst.Wage += 50;
+                MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
             }
             if (randomNumber < currentChanceToPromote)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
                 textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
-                _inst.Wage += 50;
+                MoneyEarned += 50;
                 currentChanceToPromote = 0.0f;
             }
             else if (randomNumber > currentChanceToPromote)
