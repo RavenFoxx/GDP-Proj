@@ -1385,8 +1385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 202.02, y: 179.95}
-  m_SizeDelta: {x: 395.96, y: 30}
+  m_AnchoredPosition: {x: 202.02, y: 164.95003}
+  m_SizeDelta: {x: 395.96, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &494797500
 MonoBehaviour:
@@ -2156,6 +2156,7 @@ MonoBehaviour:
   Goal: 0
   Wage: 0
   Name: PlayerNameNotFound
+  NText: 
 --- !u!4 &813024154
 Transform:
   m_ObjectHideFlags: 0
@@ -4702,7 +4703,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.049987793}
-  m_SizeDelta: {x: 385.96, y: 20}
+  m_SizeDelta: {x: 385.96, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811928644
 MonoBehaviour:
@@ -6081,6 +6082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OtherInfoText: {fileID: 2122912890}
   NameText: {fileID: 1177953847}
+  NarrativeText: {fileID: 1811928644}
   Energy: {fileID: 2060209017}
   Hunger: {fileID: 1951869494}
   Happiness: {fileID: 1399522252}

@@ -189,6 +189,7 @@ public class HomeManager : MonoBehaviour
     public void LeaveHome()
     {
         SceneManager.UnloadSceneAsync("HomeAction");
+        _inst.NText = _inst.Name + " left his house.";
         //Debug.Log("Total Energy is " + _inst.Energy);
         //Debug.Log("Total Happinesss is " + _inst.Happiness);
         //Debug.Log("Total Hunger is " + _inst.Hunger);

@@ -76,7 +76,7 @@ public class BankAction : MonoBehaviour
     }
     public void ExitBank()
     {
-        textboxText.text = "You left BankCent.";
+        _inst.NText = _inst.Name + " left BankCent.";
         SceneManager.UnloadSceneAsync("BankAction");
     }
     //for player UI

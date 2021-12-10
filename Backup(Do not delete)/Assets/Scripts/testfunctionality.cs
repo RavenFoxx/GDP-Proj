@@ -195,7 +195,7 @@ public class testfunctionality : MonoBehaviour
     }
     public void ExitWorkplace()
     {
-        textDisplay.text = "You left your workplace.";
+        _inst.NText = _inst.Name + " left WacDonald.";
         SceneManager.UnloadSceneAsync("WorkplaceAction");
     }
 }
