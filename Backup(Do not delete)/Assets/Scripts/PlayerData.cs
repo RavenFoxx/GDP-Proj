@@ -6,6 +6,7 @@ public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance { get; private set; }
     public float Money;
+    public float BankedMoney;
     public int Energy;
     public int Hunger;
     public int Happiness;

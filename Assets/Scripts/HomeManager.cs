@@ -162,9 +162,9 @@ public class HomeManager : MonoBehaviour
             _inst.Energy -= energyTaken;
             _inst.Happiness += comHappinessGain;
 
-            if (_inst.Happiness > 50)
+            if (_inst.Happiness > 100)
             {
-                _inst.Happiness = 50;
+                _inst.Happiness = 100;
             }
 
             //Debug.Log("Energy is " + _inst.Energy);

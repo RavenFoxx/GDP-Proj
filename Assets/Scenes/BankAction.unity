@@ -445,7 +445,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 180}
-  m_SizeDelta: {x: 980, y: 120}
+  m_SizeDelta: {x: 980, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235187532
 MonoBehaviour:
@@ -1907,7 +1907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26aae2e84fdd4742b1fc17934a35eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BankedMoney: 300
   monehText: {fileID: 294376872}
   textboxText: {fileID: 1039319654}
   depositPopoutText: {fileID: 1161009181}
@@ -2557,7 +2556,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 180}
-  m_SizeDelta: {x: 980, y: 120}
+  m_SizeDelta: {x: 980, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1161009181
 MonoBehaviour:

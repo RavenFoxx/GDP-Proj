@@ -557,7 +557,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Check with the bank
+  m_Text: 'call the bank and inquire about it
+
+'
 --- !u!222 &1073926297
 CanvasRenderer:
   m_ObjectHideFlags: 0

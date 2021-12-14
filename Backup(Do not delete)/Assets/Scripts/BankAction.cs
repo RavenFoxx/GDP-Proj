@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class BankAction : MonoBehaviour
 {
-    public float BankedMoney;
     public Text monehText;
     public Text textboxText;
     public Text depositPopoutText;
@@ -15,43 +14,56 @@ public class BankAction : MonoBehaviour
     public GameObject withdrawPopoutMsg;
     PlayerData _inst = PlayerData.Instance;
     private void Awake() {
-        monehText.text = "Account balance: $" + BankedMoney.ToString();
+        monehText.text = "Account balance: $" + _inst.BankedMoney.ToString();
         textboxText.text = "You entered BankCent. What will you do?";
     }
     public void DepositAmt() {
         float amt = 0;
-        try { amt = float.Parse(depositAmount.text); }
+        try {
+            amt = float.Parse(depositAmount.text);
+            if (amt < 0) {
+                Debug.Log("User entered a negative value.");
+                depositPopoutText.text = "You cannot deposit less than $0.\nYou have $" + _inst.Money + " on hand.\nHow much do you want to deposit?";
+                return;
+            }
+        }
         catch(Exception e) {
             Debug.Log("User entered a non integer/float value into " + depositAmount + "\n" + e);
             return;
         }
-        if (_inst.Money >= amt)
-        {
+        if (_inst.Money >= amt) {
             _inst.Money -= amt;
-            BankedMoney += amt;
+            _inst.BankedMoney += amt;
             depositPopoutMsg.SetActive(false);
             clearDataField();
-            monehText.text = "$" + BankedMoney.ToString();
+            monehText.text = "$" + _inst.BankedMoney.ToString();
             textboxText.text = "You have deposited $" + amt.ToString() + ".";
         }
         else depositPopoutText.text = "You don't have enough money on hand.\nYou have $" + _inst.Money + " on hand.\nHow much do you want to deposit?";
     }
     public void WithdrawAmt() {
         float amt = 0;
-        try { amt = float.Parse(withdrawAmount.text); }
+        try {
+            amt = float.Parse(withdrawAmount.text);
+            if (amt < 0) {
+                Debug.Log("User entered a negative value.");
+                withdrawPopoutText.text = "You cannot withdraw less than $0.\nYou have $" + _inst.BankedMoney + " in the bank.\nHow much do you want to withdraw?";
+                return;
+            }
+        }
         catch (Exception e) {
             Debug.Log("User entered a non integer/float value into " + withdrawAmount + "\n" + e);
             return;
         }
-        if (BankedMoney >= amt) {
-            BankedMoney -= amt;
+        if (_inst.BankedMoney >= amt) {
+            _inst.BankedMoney -= amt;
             _inst.Money += amt;
             withdrawPopoutMsg.SetActive(false);
             clearDataField();
-            monehText.text = "$" + BankedMoney.ToString();
+            monehText.text = "$" + _inst.BankedMoney.ToString();
             textboxText.text = "You have withdrawn $" + amt.ToString() + ".";
         }
-        else withdrawPopoutText.text = "You don't have enough money in the bank.\nYou have $" + BankedMoney + " in the bank.\nHow much do you want to withdraw?";
+        else withdrawPopoutText.text = "You don't have enough money in the bank.\nYou have $" + _inst.BankedMoney + " in the bank.\nHow much do you want to withdraw?";
     }
     public void Deposit() {
         depositPopoutMsg.SetActive(true);
@@ -59,10 +71,7 @@ public class BankAction : MonoBehaviour
     }
     public void Withdraw() {
         withdrawPopoutMsg.SetActive(true);
-        withdrawPopoutText.text = "you have $" + BankedMoney + " in the bank.\nHow much do you want to withdraw?";
-    }
-    public void AddInterest(float total) { //call this when you proceed to the next day
-        BankedMoney += (BankedMoney / 100) * 10;
+        withdrawPopoutText.text = "you have $" + _inst.BankedMoney + " in the bank.\nHow much do you want to withdraw?";
     }
     public void clearDataField() {
         depositAmount.text = "";
@@ -89,7 +98,7 @@ public class BankAction : MonoBehaviour
         Energy.value = (float)_inst.Energy / 100;
         Hunger.value = (float)_inst.Hunger / 100;
         Happiness.value = (float)_inst.Happiness / 100;
-        Money.text = "Account balance: $" + _inst.Money;
+        Money.text = "Money: $" + _inst.Money;
     }
     private void Update()
     {

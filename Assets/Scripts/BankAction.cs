@@ -23,7 +23,7 @@ public class BankAction : MonoBehaviour
             amt = float.Parse(depositAmount.text);
             if (amt < 0) {
                 Debug.Log("User entered a negative value.");
-                depositPopoutText.text = "You cannot deposit less than $0.";
+                depositPopoutText.text = "You cannot deposit less than $0.\nYou have $" + _inst.Money + " on hand.\nHow much do you want to deposit?";
                 return;
             }
         }
@@ -47,7 +47,7 @@ public class BankAction : MonoBehaviour
             amt = float.Parse(withdrawAmount.text);
             if (amt < 0) {
                 Debug.Log("User entered a negative value.");
-                withdrawPopoutText.text = "You cannot withdraw less than $0.";
+                withdrawPopoutText.text = "You cannot withdraw less than $0.\nYou have $" + _inst.BankedMoney + " in the bank.\nHow much do you want to withdraw?";
                 return;
             }
         }

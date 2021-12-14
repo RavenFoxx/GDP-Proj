@@ -38,7 +38,8 @@ public class ActionManager : MonoBehaviour
             day = _inst.Day;
             _store.restockItems();
             _store.printAmountLeft();
-            if(day % 7 == 0) EventStarted = false;
+            AddInterest();
+            if (day % 7 == 0) EventStarted = false;
             if(EventStarted == false) ChooseEvent();
         }
         CheckGameState();
@@ -100,7 +101,7 @@ public class ActionManager : MonoBehaviour
             WinPopup.SetActive(true);
         }
     }
-    public void AddInterest(float total) { //For bank
+    public void AddInterest() { //For bank
         _inst.BankedMoney += (_inst.BankedMoney / 100) * 10;
     }
 }
