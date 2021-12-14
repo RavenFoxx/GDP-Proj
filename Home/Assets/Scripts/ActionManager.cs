@@ -13,6 +13,7 @@ public class ActionManager : MonoBehaviour
     bool EventStarted;
     public Text OtherInfoText;
     public Text NameText;
+    public Text NarrativeText;
     public Slider Energy;
     public Slider Hunger;
     public Slider Happiness;
@@ -28,6 +29,7 @@ public class ActionManager : MonoBehaviour
         IntroPopup.SetActive(true);
         ProgressBar.maxValue = _inst.Goal;
         SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
+        _inst.NText = "Hello dark cruel world filled with debts.";
         UpdateValues();
     }
     private void Update() {
@@ -52,6 +54,7 @@ public class ActionManager : MonoBehaviour
         Happiness.value = (float)_inst.Happiness / 100;
         ProgressBar.value = _inst.Money;
         OtherInfoText.text = "Day " + _inst.Day + " | Money: $" + _inst.Money;
+        NarrativeText.text = _inst.NText;
     }
     public void ChooseEvent() {
         int chance = Random.Range(1 + minchance, 8);

@@ -14,6 +14,7 @@ public class PlayerData : MonoBehaviour
     public int Goal;
     public int Wage;
     public string Name;
+    public string NText;
     private void Awake()
     {
         if (Instance == null) {

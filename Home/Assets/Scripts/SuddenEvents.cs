@@ -52,12 +52,12 @@ public class SuddenEvents : MonoBehaviour
     {
         _inst.Energy -= 20;
         _inst.Hunger -= 10;
-        popUpText.text = "The bank has replied and said that there's an error on their part and they have fixed it as well as given an additional 10 dollars as compensation.";
+        _inst.NText = "The bank has replied and said that there's an error on their part and they have fixed it as well as given an additional 10 dollars as compensation.";
     }
     public void Scenario1No()
     {
         _inst.Money -= 60;
-        popUpText.text = "There's a hidden fee and " + _inst.Name + " got charged 60 dollars without knowing, this could be avoided by contacting the bank.";
+        _inst.NText= "There's a hidden fee and " + _inst.Name + " got charged 60 dollars without knowing, this could be avoided by contacting the bank.";
     }
     public void Scenario2Yes()
     {
@@ -65,12 +65,12 @@ public class SuddenEvents : MonoBehaviour
         _inst.Energy -= 20;
         _inst.Hunger -= 20;
         _inst.Happiness += 20;
-        popUpText.text = _inst.Name + " had fun for the day.";
+        _inst.NText= _inst.Name + " had fun for the day.";
     }
     public void Scenario2No()
     {
         _inst.Happiness -= 10;
-        popUpText.text = _inst.Name + " felt a little sad as " + _inst.Name + " decline his friend's offer to hang out.";
+        _inst.NText = _inst.Name + " felt a little sad as " + _inst.Name + " decline his friend's offer to hang out.";
     }
     public void Scenario3Yes()
     {
@@ -78,33 +78,33 @@ public class SuddenEvents : MonoBehaviour
         _inst.Energy -= 20;
         _inst.Hunger -= 20;
         _inst.Happiness += 20;
-        popUpText.text = _inst.Name + " have been treated to a meal as well as received 20 dollars from his uncle.";
+        _inst.NText = _inst.Name + " have been treated to a meal as well as received 20 dollars from his uncle.";
     }
     public void Scenario3No()
     {
-        popUpText.text = _inst.Name + "'s uncle replied that he'll find someone else.";
+        _inst.NText = _inst.Name + "'s uncle replied that he'll find someone else.";
     }
     public void Scenario4Yes()
     {
         _inst.Money -= 50;
         _inst.Happiness += 20;
-        popUpText.text = _inst.Name + " like his new bag";
+        _inst.NText = _inst.Name + " like his new bag";
     }
     public void Scenario4No()
     {
         _inst.Money -= 30;
-        popUpText.text = _inst.Name + " have a new bag";
+        _inst.NText = _inst.Name + " have a new bag";
     }
     public void Scenario5Yes()
     {
         _inst.Energy -= 40;
         _inst.Happiness += 30;
-        popUpText.text = _inst.Name + " enjoyed playing basketball with his friends.";
+        _inst.NText = _inst.Name + " enjoyed playing basketball with his friends.";
     }
     public void Scenario5No()
     {
         _inst.Happiness -= 10;
-        popUpText.text = _inst.Name + " is disheartened that he couldn't join his friends.";
+        _inst.NText = _inst.Name + " is disheartened that he couldn't join his friends.";
     }
  
     public void closePopUp()
