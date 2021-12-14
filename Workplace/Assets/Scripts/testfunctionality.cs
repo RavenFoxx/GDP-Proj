@@ -25,7 +25,7 @@ public class testfunctionality : MonoBehaviour
 
     public void showWorkPopup()
     {
-        WorkTextDisplay.text = "Work to earn $" + _inst.Wage + " but lose 50 Energy?";
+        WorkTextDisplay.text = "Work to earn $" + _inst.Wage + " but lose 50 Energy?" +"\n" + "You will also increase your chance of promoting by 10%";
         workPopup.SetActive(true);
         workButton.interactable = false;
         promotionButton.interactable = false;
@@ -73,7 +73,7 @@ public class testfunctionality : MonoBehaviour
     {
         PlayerData.Instance.Money += _inst.Wage;
         Debug.Log("You earned $100 from working today!");
-        textDisplay.text = "You earned $" + _inst.Wage + " from working today!" + "\n" + "You lost 50 energy from working!";
+        textDisplay.text = "You earned $" + _inst.Wage + " from working today!" + "\n" + "You lost 50 energy from working!" + "\n" + "You have increased your chances of promoting by 10%";
         PlayerData.Instance.Energy -= 50;
         Debug.Log("You lost 50 energy from working.");
         //textDisplay.text = " You lost 50 energy from working!";
@@ -85,11 +85,11 @@ public class testfunctionality : MonoBehaviour
         if (currentChanceToPromote < minimumChanceToPromote)
         {
             Debug.Log("Sorry, You do not meet the requirements!");
-            textDisplay.text = "Sorry, You do not meet the requirements!";
+            textDisplay.text = "Sorry, You do not meet the requirements!" + "\n" + "You have to work to increase your chances to promote!";
         }
         else
         {
-            PromotionTextDisplay.text = "Current Chance to promote:" + currentChanceToPromote * 100 + "%" + "\n" + "Do you want to try and promote?";
+            PromotionTextDisplay.text = "Current Chance to Promote:" + currentChanceToPromote * 100 + "%" + "\n" + "Do you want to try and promote to earn more money from working?";
             promotionPopup.SetActive(true);
             workButton.interactable = false;
             promotionButton.interactable = false;
@@ -128,17 +128,17 @@ public class testfunctionality : MonoBehaviour
         {
             float randomNumber = Random.Range(0.1f, 1f);
             Debug.Log(randomNumber);
-            if(currentChanceToPromote == 1f)
+            if(currentChanceToPromote >= 1f)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay from working!" + "\n" + "Your chances to promote have reset to 0%";
                 _inst.Wage += 50;
                 currentChanceToPromote = 0.0f;
             }
             if(randomNumber < currentChanceToPromote)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay from working!" + "\n" + "Your chances to promote have reset to 0%";
                 _inst.Wage += 50;
                 currentChanceToPromote = 0.0f;
             }
@@ -146,25 +146,25 @@ public class testfunctionality : MonoBehaviour
             {
                 Debug.Log("Sorry, You have failed to promote!");
                 currentChanceToPromote -= 0.05f;
-                textDisplay.text = "Sorry, You have failed to promote!";
+                textDisplay.text = "Sorry, You have failed to promote!" + "\n" + "You have also lost 5% chance to promote.";
             }
         }
         else if(PlayerData.Instance.Intelligence > 0f)
         {
-            currentChanceToPromote += PlayerData.Instance.Intelligence / 10;
+            currentChanceToPromote += PlayerData.Instance.Intelligence / 100;
             float randomNumber = Random.Range(0.1f, 1f);
             Debug.Log(randomNumber);
             if (currentChanceToPromote >= 1f)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay from working!" + "\n" + "Your chances to promote have reset to 0%";
                 _inst.Wage += 50;
                 currentChanceToPromote = 0.0f;
             }
             if (randomNumber < currentChanceToPromote)
             {
                 Debug.Log("Congratulations, You have been promoted and now have higher pay!");
-                textDisplay.text = "Congratulations, You have been promoted and now have higher pay!";
+                textDisplay.text = "Congratulations, You have been promoted and now have higher pay from working!" + "\n" + "Your chances to promote have reset to 0%";
                 _inst.Wage += 50;
                 currentChanceToPromote = 0.0f;
             }
@@ -172,7 +172,7 @@ public class testfunctionality : MonoBehaviour
             {
                 Debug.Log("Sorry, You have failed to promote!");
                 currentChanceToPromote -= 0.05f;
-                textDisplay.text = "Sorry, You have failed to promote!";
+                textDisplay.text = "Sorry, You have failed to promote!" + "\n" + "You have also lost 5% chance to promote.";
             }
         }
     }
@@ -195,7 +195,7 @@ public class testfunctionality : MonoBehaviour
     }
     public void ExitWorkplace()
     {
-        textDisplay.text = "You left your workplace.";
+        _inst.NText = _inst.Name + " left WacDonald.";
         SceneManager.UnloadSceneAsync("WorkplaceAction");
     }
 }
