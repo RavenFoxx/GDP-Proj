@@ -100,4 +100,7 @@ public class ActionManager : MonoBehaviour
             WinPopup.SetActive(true);
         }
     }
+    public void AddInterest(float total) { //For bank
+        _inst.BankedMoney += (_inst.BankedMoney / 100) * 10;
+    }
 }
